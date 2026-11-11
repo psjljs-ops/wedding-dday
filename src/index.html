@@ -103,6 +103,14 @@
   .faq details[open] summary::after { transform: rotate(-135deg); margin-top: -2px; }
   .faq details p { margin: 0 0 16px; color: var(--sub); font-size: 15px; }
   footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 28px; }
+  /* 형제 사이트 연결 카드 */
+  .sib { display: grid; gap: 8px; }
+  .sib a { display: flex; align-items: center; gap: 12px; background: var(--soft); border-radius: 14px; padding: 13px 14px; text-decoration: none; color: var(--text); }
+  .sib a:hover { background: var(--line); }
+  .sib .ic { font-size: 22px; line-height: 1; flex: none; }
+  .sib b { display: block; font-size: 15px; font-weight: 700; }
+  .sib small { display: block; font-size: 13px; color: var(--sub); }
+  .sib .go { margin-left: auto; color: var(--muted); font-size: 18px; flex: none; }
 </style>
 </head>
 <body>
@@ -158,6 +166,15 @@
       <a href="/offers?c=rental"><span>💧</span>정수기·가전 렌탈</a>
       <a href="/offers?c=honsu"><span>🛒</span>혼수 생활용품</a>
       <a href="/offers?c=honeymoon"><span>✈️</span>신혼여행 준비물</a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>함께 보면 좋은 체크리스트</h2>
+    <div class="sib">
+      <a href="https://isa-checklist.pages.dev/"><span class="ic" aria-hidden="true">🚚</span><span><b>이사 체크리스트</b><small>이사 날짜만 넣으면 D-day별 할 일</small></span><span class="go" aria-hidden="true">›</span></a>
+      <a href="https://yakjeong.pages.dev/"><span class="ic" aria-hidden="true">📶</span><span><b>인터넷 약정 계산기</b><small>약정 만료일과 예상 위약금 계산</small></span><span class="go" aria-hidden="true">›</span></a>
+      <a href="https://chulsan-checklist.pages.dev/"><span class="ic" aria-hidden="true">🍼</span><span><b>출산 준비 체크리스트</b><small>예정일로 주차별 할 일·출산 가방</small></span><span class="go" aria-hidden="true">›</span></a>
     </div>
   </section>
 
