@@ -201,7 +201,7 @@ var TASKS = [
   [-330, -240, "상견례", "양가 인사와 함께 예식 시기, 예산 분담을 이야기해요."],
   [-330, -210, "예식장 투어·계약", "식대, 보증 인원, 대관료, 음식 시식 일정을 비교해 보세요. 웨딩박람회에서 여러 곳을 한 번에 상담받을 수 있어요.", "fairs"],
   [-270, -180, "스드메 계약", "스튜디오·드레스·메이크업 패키지를 비교하고 추가금 항목을 확인하세요. 박람회에서 여러 업체를 하루에 비교하면 편해요.", "fairs"],
-  [-240, -150, "신혼여행지 정하고 항공권 예약", "성수기 항공권은 일찍 오를 수 있어요. 여권 만료일도 확인하세요."],
+  [-240, -150, "신혼여행지 정하고 항공권 예약", "성수기 항공권은 일찍 오를 수 있어요. 여권 만료일도 확인하세요. 신혼여행 박람회에서 여러 여행사 상품을 한 번에 비교할 수 있어요.", "honeymoonfair"],
   [-210, -90, "신혼집 구하기", "전세·매매 계약과 대출 일정을 함께 맞춰야 해요. 잔금일과 이사일을 정해 두세요."],
   [-150, -90, "웨딩 촬영", "촬영 전 드레스 셀렉, 소품, 헤어 시안을 준비해요."],
   [-120, -60, "예물·예복·한복 준비", "맞춤 예복은 제작 기간이 걸려요. 가봉 일정까지 넉넉히 잡으세요."],
@@ -234,15 +234,15 @@ function md(d) { return (d.getMonth()+1) + "월 " + d.getDate() + "일"; }
 function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 function rel(n) { if (n === 0) return "당일"; if (n > 0) return "D+" + n; var m = Math.round(-n / 30); return -n >= 60 ? m + "개월 전" : -n + "일 전"; }
 
-var LINK = { fairs:"전국 웨딩박람회 일정 보기", moving:"포장이사 견적 비교", clean:"입주청소 견적 비교", interior:"인테리어 견적 비교", internet:"인터넷 상담 보기",
+var LINK = { fairs:"전국 웨딩박람회 일정 보기", honeymoonfair:"신혼여행 박람회 일정 보기", moving:"포장이사 견적 비교", clean:"입주청소 견적 비교", interior:"인테리어 견적 비교", internet:"인터넷 상담 보기",
   rental:"가전 렌탈 상담 보기", honsu:"추천 생활용품 보기", honeymoon:"추천 여행 준비물 보기" };
-var TALK = { fairs:1, moving:1, clean:1, interior:1, internet:1, rental:1 };
+var TALK = { fairs:1, honeymoonfair:1, moving:1, clean:1, interior:1, internet:1, rental:1 };
 
 function taskHtml(t, i, wd, dn) {
   var start = addDays(wd, t[0]), end = addDays(wd, t[1]), done = !!S.done[i];
   var when = rel(t[0]) + (t[1] !== t[0] ? " ~ " + rel(t[1]) : "") + " · " + md(start) + (t[1] !== t[0] ? " ~ " + md(end) : "");
   var hot = dn >= t[0] && dn <= t[1] && !done;
-  var link = t[4] ? '<a class="shop' + (TALK[t[4]] ? " talk" : "") + '" href="' + (t[4] === "fairs" ? "/fairs" : "/offers?c=" + t[4]) + '">' + LINK[t[4]] + '</a>' : "";
+  var link = t[4] ? '<a class="shop' + (TALK[t[4]] ? " talk" : "") + '" href="' + (t[4] === "fairs" ? "/fairs" : t[4] === "honeymoonfair" ? "/fairs?k=honeymoon" : "/offers?c=" + t[4]) + '">' + LINK[t[4]] + '</a>' : "";
   return '<div class="task' + (done ? " done" : "") + '"><input type="checkbox" class="chk" data-i="' + i + '"' + (done ? " checked" : "") +
     ' aria-label="' + esc(t[2]) + ' 완료"><div class="tbody"><div class="tt">' + esc(t[2]) + '</div><div class="td">' + esc(t[3]) + '</div>' +
     '<div class="tm' + (hot ? " hot" : "") + '">' + (hot ? "지금 할 때 · " : "") + when + '</div>' + link + '</div></div>';

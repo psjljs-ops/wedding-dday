@@ -226,6 +226,16 @@ function chip(id, set) {{
   }});
 }}
 chip("rc", function (v) {{ R = v; }}); chip("kc", function (v) {{ K = v; }});
+/* 주소로 필터 미리 선택: /fairs?k=honeymoon, /fairs?r=부산 */
+(function () {{
+  var q = new URLSearchParams(location.search), qk = q.get("k") || "", qr = q.get("r") || "";
+  [["kc", "k", qk], ["rc", "r", qr]].forEach(function (x) {{
+    if (!x[2]) return;
+    var b = document.querySelector('#' + x[0] + ' [data-' + x[1] + '="' + x[2].replace(/"/g, '') + '"]'); if (!b) return;
+    document.querySelectorAll("#" + x[0] + " button").forEach(function (y) {{ y.setAttribute("aria-pressed", y === b); }});
+    if (x[1] === "k") K = x[2]; else R = x[2];
+  }});
+}})();
 draw();
 </script>
 </body>
