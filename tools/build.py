@@ -68,8 +68,12 @@ def seo_block(path, title, desc):
     return "\n".join(lines)
 
 
+GUIDE_CARD = ""
+
+
 def render(name, path, title, desc):
     s = (SRC / name).read_text(encoding="utf-8")
+    s = s.replace("<!--GUIDES-->", GUIDE_CARD)
     values = {
         "SITE_TITLE": cfg["title"], "OFFERS_TITLE": cfg["offers_title"],
         "EYEBROW": cfg["eyebrow"], "HEADLINE_1": cfg["headline_1"], "HEADLINE_2": cfg["headline_2"],
@@ -116,6 +120,21 @@ def main():
     DIST.mkdir(exist_ok=True)
     for f in DIST.iterdir():  # 폴더는 두고 안의 파일만 지움 (미리보기 서버가 폴더를 쓰고 있어도 됨)
         shutil.rmtree(f) if f.is_dir() else f.unlink()
+
+    # 가이드 글 (/guide/...)
+    import sys as _sys
+    _sys.path.insert(0, str(ROOT / "tools"))
+    import guides as G
+    oc = {"accent": "#3182f6", "accent_soft": "#e8f3ff", "accent_text": "#1b64da", **cfg.get("og_colors", {})}
+    global GUIDE_CARD
+    GUIDES = G.build(ROOT, DIST, {
+        "url": URL, "name": "결혼 준비 D-day", "theme": oc["accent"],
+        "colors": {"accent": oc["accent"], "soft": oc["accent_soft"], "text": oc["accent_text"]},
+        "index_html": (SRC / "index.html").read_text(encoding="utf-8"),
+        "footer": "이 글은 일반적인 정보를 정리한 참고 자료입니다. 제도와 기한은 관할 기관과 각 회사의 최신 안내를 확인해 주세요.",
+        "goatcounter": cfg.get("goatcounter", ""),
+    })
+    GUIDE_CARD = G.card(GUIDES)
     render("index.html", "/", cfg["title"], cfg["description"])
     render("offers.html", "/offers", f'{cfg["offers_title"]} | {cfg["title"]}', cfg["description"])
     render("404.html", "/404", cfg["title"], cfg["description"])
@@ -136,6 +155,7 @@ def main():
         extra.append(("/fairs", "0.9"))
 
     urls = [("/", "1.0")] + extra + [("/offers", "0.6")]
+    urls += [("/guide/", "0.7")] + [(f"/guide/{g['slug']}", "0.8") for g in GUIDES]
     (DIST / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{URL}{p}</loc><lastmod>{TODAY}</lastmod><priority>{pr}</priority></url>\n" for p, pr in urls)
@@ -143,8 +163,9 @@ def main():
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {URL}/sitemap.xml\n", encoding="utf-8")
 
     with zipfile.ZipFile(ROOT / "dist.zip", "w", zipfile.ZIP_DEFLATED) as z:
-        for f in sorted(DIST.iterdir()):
-            z.write(f, f.name)
+        for f in sorted(DIST.rglob("*")):  # 하위 폴더(guide/ 등)까지 포함
+            if f.is_file():
+                z.write(f, f.relative_to(DIST).as_posix())
     print(f"완료: {URL}  (dist/ {len(list(DIST.iterdir()))}개 파일, dist.zip)")
 
 
