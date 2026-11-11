@@ -27,6 +27,23 @@ TODAY = datetime.date.today().isoformat()
 e = lambda s: html.escape(str(s), quote=True)
 
 
+def ld_json(src_html, title, desc):
+    """메인 페이지용 구조화 데이터: 무료 웹 도구(WebApplication) + 자주 묻는 질문(FAQPage)."""
+    import re
+    blocks = [{
+        "@context": "https://schema.org", "@type": "WebApplication", "name": cfg["title"].split(" - ")[0],
+        "url": URL + "/", "description": desc, "inLanguage": "ko", "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Any", "isAccessibleForFree": True,
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+    }]
+    qa = re.findall(r"<details><summary>(.*?)</summary><p>(.*?)</p></details>", src_html, re.S)
+    if qa:
+        strip = lambda x: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", x)).strip()
+        blocks.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in qa]})
+    return "\n".join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False) + "</script>" for b in blocks)
+
+
 def seo_block(path, title, desc):
     lines = [
         f'<meta name="description" content="{e(desc)}">',
@@ -60,10 +77,13 @@ def render(name, path, title, desc):
     }
     for k, v in values.items():
         s = s.replace("{{" + k + "}}", e(v))
-    s = s.replace("<!--SEO-->", seo_block(path, title, desc))
-    left = [t for t in ("{{", "}}") if t in s]
+    left = [t for t in ("{{", "}}") if t in s]  # 구조화 데이터(JSON)를 넣기 전에 검사
     if left:
         raise SystemExit(f"{name}: 채워지지 않은 {{...}} 자리가 있습니다")
+    seo = seo_block(path, title, desc)
+    if path == "/":
+        seo += "\n" + ld_json(s, title, desc)
+    s = s.replace("<!--SEO-->", seo)
     (DIST / name).write_text(s, encoding="utf-8")
 
 
@@ -112,10 +132,10 @@ def main():
         theme = cfg.get("og_colors", {}).get("accent", "#3182f6")
         t = "전국 웨딩박람회 일정 | " + cfg["title"]
         dsc = f"전국 웨딩박람회·신혼여행 박람회 일정 {len(fdata['fairs'])}곳을 날짜순으로 정리했어요. 지역별로 보고 무료 초대권을 신청하세요."
-        (DIST / "fairs.html").write_text(F.list_page(fdata, cfg, seo_block("/fairs", t, dsc), style, theme), encoding="utf-8")
+        (DIST / "fairs.html").write_text(F.list_page(fdata, cfg, seo_block("/fairs", t, dsc) + "\n" + F.events_ld(fdata, URL + "/fairs"), style, theme), encoding="utf-8")
         extra.append(("/fairs", "0.9"))
 
-    urls = [("/", "1.0")] + extra + [("/offers", "0.6")] + [(f"/offers?c={c}", "0.7") for c in cfg.get("offer_categories", [])]
+    urls = [("/", "1.0")] + extra + [("/offers", "0.6")]
     (DIST / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{URL}{p}</loc><lastmod>{TODAY}</lastmod><priority>{pr}</priority></url>\n" for p, pr in urls)

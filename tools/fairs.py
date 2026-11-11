@@ -80,6 +80,24 @@ def load(root):
     return data
 
 
+def events_ld(data, page_url):
+    """박람회 일정 구조화 데이터(Event). 구글 '이벤트' 검색 결과에 노출될 수 있음."""
+    items = []
+    for f in data["fairs"]:
+        place = f["address"]
+        items.append({
+            "@context": "https://schema.org", "@type": "Event", "name": f["name"],
+            "startDate": f["start"], "endDate": f["end"],
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": {"@type": "Place", "name": place, "address": {"@type": "PostalAddress", "streetAddress": place, "addressCountry": "KR"}},
+            "description": INTRO[f["kind"]].split(". ")[0] + ".",
+            "url": page_url,
+            "isAccessibleForFree": True,
+        })
+    return '<script type="application/ld+json">' + json.dumps(items, ensure_ascii=False) + "</script>"
+
+
 def style_of(index_html):
     m = re.search(r"<style>.*?</style>", index_html, re.S)
     return m.group(0) if m else ""
