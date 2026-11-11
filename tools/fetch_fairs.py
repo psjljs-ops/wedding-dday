@@ -64,7 +64,7 @@ def main():
                         words = words[:i + k] + words[i + 2 * k:]
                         break
             area = " ".join(words)
-            fairs.append({"id": fid, "region": region, "district": district, "name": name,
+            fairs.append({"id": fid, "slug": slug, "region": region, "district": district, "name": name,
                           "start": start, "end": end, "address": area, "kind": kind_of(name)})
 
     fairs.sort(key=lambda f: (f["start"], f["end"], f["region"], f["name"]))

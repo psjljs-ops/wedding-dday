@@ -69,6 +69,14 @@ def load(root):
     data = json.loads(p.read_text(encoding="utf-8"))
     today = datetime.date.today().isoformat()
     data["fairs"] = [f for f in data["fairs"] if f["end"] >= today]
+    lp = root / "data" / "fair_links.json"
+    links = json.loads(lp.read_text(encoding="utf-8"))["links"] if lp.exists() else {}
+    for f in data["fairs"]:
+        code = links.get(f.get("slug", ""))
+        f["link"] = "https://albarich.com/pt/" + code if code else ""
+    missing = [f["name"] for f in data["fairs"] if not f["link"]]
+    if missing:
+        print("박람회 전용 링크 없음(통합 링크 사용):", ", ".join(missing))
     return data
 
 
@@ -138,7 +146,7 @@ def card(f, cfg):
     return (f'<div class="fc"><div class="fh"><span class="ic" aria-hidden="true">{icon}</span><div><b>{e(f["name"])}</b>'
             f'<small><span class="badge">{e(kname)}</span>{e(f["district"])}</small></div></div>'
             f'<div class="fd"><span>📅 {e(period(f))}</span><span>📍 {e(f["address"])}</span></div>'
-            f'<div class="fb"><a class="ap" href="{e(cfg["fair_link"])}" target="_blank" rel="sponsored nofollow noopener">무료 초대권 신청</a>'
+            f'<div class="fb"><a class="ap" href="{e(f["link"] or cfg["fair_link"])}" target="_blank" rel="sponsored nofollow noopener">무료 초대권 신청</a>'
             f'<a class="mp" href="{e(maplink)}" target="_blank" rel="noopener">지도</a></div></div>')
 
 
@@ -149,7 +157,7 @@ def list_page(data, cfg, seo, style, theme):
         if f["region"] not in regions:
             regions.append(f["region"])
     fd = d_of(data["fetched"])
-    js_data = json.dumps([{k: f[k] for k in ("region", "district", "name", "start", "end", "kind", "address")} for f in fairs], ensure_ascii=False)
+    js_data = json.dumps([{k: f[k] for k in ("region", "district", "name", "start", "end", "kind", "address", "link")} for f in fairs], ensure_ascii=False)
     # 검색엔진용: 자바스크립트 없이도 목록이 보이게 서버에서 한 번 그려 둠
     static = "".join(card(f, cfg) for f in fairs)
     chips = '<button type="button" data-r="" aria-pressed="true">전체</button>' + "".join(
@@ -173,8 +181,8 @@ def list_page(data, cfg, seo, style, theme):
     <div class="chips" id="kc">{kchips}</div>
   </section>
   <div id="list"><div class="fl">{static}</div></div>
-  <a class="cta" href="{e(cfg["fair_link"])}" target="_blank" rel="sponsored nofollow noopener">전국 박람회 무료 초대권 신청하기</a>
-  <p class="note">신청 페이지에서 지역 탭을 누르면 원하는 박람회를 찾을 수 있어요. 일정은 주최 측 사정으로 바뀔 수 있으니 신청 페이지에서 한 번 더 확인하세요.</p>
+  <a class="cta" href="{e(cfg["fair_link"])}" target="_blank" rel="sponsored nofollow noopener">전국 일정 한 화면에서 보기</a>
+  <p class="note">각 박람회의 「무료 초대권 신청」을 누르면 그 박람회 신청 페이지로 바로 가요. 위 버튼은 전국 일정을 한 화면에서 보는 페이지예요. 일정은 주최 측 사정으로 바뀔 수 있으니 신청 페이지에서 한 번 더 확인하세요.</p>
   <footer>박람회 정보는 주최 측 안내를 모아 정리한 것으로, 일정과 혜택은 주최 측 사정에 따라 달라질 수 있습니다.<br>이 페이지에는 제휴 링크가 포함되어 있으며, 이를 통해 운영자가 수수료를 받을 수 있습니다.</footer>
 </div>
 <script>
@@ -204,7 +212,7 @@ function draw() {{
     return '<div class="wk">' + esc(g[0]) + ' · ' + g[1].length + '곳</div><div class="fl">' + g[1].map(function (f) {{
       return '<div class="fc"><div class="fh"><span class="ic" aria-hidden="true">' + KIND[f.kind][1] + '</span><div><b>' + esc(f.name) + '</b><small><span class="badge">' +
         esc(KIND[f.kind][0]) + '</span>' + esc(f.district) + '</small></div></div><div class="fd"><span>📅 ' + per(f) + '</span><span>📍 ' + esc(f.address) + '</span></div>' +
-        '<div class="fb"><a class="ap" href="' + LINK + '" target="_blank" rel="sponsored nofollow noopener">무료 초대권 신청</a><a class="mp" href="https://map.naver.com/p/search/' +
+        '<div class="fb"><a class="ap" href="' + (f.link || LINK) + '" target="_blank" rel="sponsored nofollow noopener">무료 초대권 신청</a><a class="mp" href="https://map.naver.com/p/search/' +
         encodeURIComponent(f.address) + '" target="_blank" rel="noopener">지도</a></div></div>';
     }}).join("") + '</div>';
   }}).join("");

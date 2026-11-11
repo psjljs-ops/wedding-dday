@@ -4,6 +4,7 @@
  "fairs": [
   {
    "id": "gaudi-1101",
+   "slug": "gaudi",
    "region": "경기",
    "district": "경기 수원시 팔달구",
    "name": "가우디웨딩 수원토탈샵",
@@ -14,6 +15,7 @@
   },
   {
    "id": "paris-total-1101",
+   "slug": "paris_total",
    "region": "경기",
    "district": "경기 수원시 팔달구",
    "name": "수원토탈샵 라벨르엘린 스드메 상담예약",
@@ -24,6 +26,7 @@
   },
   {
    "id": "paris-ebon-1101",
+   "slug": "paris_ebon",
    "region": "경기",
    "district": "경기 수원시 팔달구",
    "name": "이본한복 상담신청",
@@ -34,6 +37,7 @@
   },
   {
    "id": "directwd-1101",
+   "slug": "directwd",
    "region": "서울",
    "district": "서울 강남구",
    "name": "다이렉트 결혼준비 웨딩박람회",
@@ -44,6 +48,7 @@
   },
   {
    "id": "iwc-incheon-1101",
+   "slug": "iwc_incheon",
    "region": "인천",
    "district": "인천 남동구",
    "name": "IWC 인천 웨딩박람회",
@@ -54,6 +59,7 @@
   },
   {
    "id": "rachel-ic-1101",
+   "slug": "rachel_ic",
    "region": "인천",
    "district": "인천 남동구",
    "name": "레이첼 인천 웨딩박람회",
@@ -64,6 +70,7 @@
   },
   {
    "id": "rococo-1101",
+   "slug": "rococo",
    "region": "인천",
    "district": "인천 남동구",
    "name": "로코코 웨딩드레스 초대전",
@@ -74,6 +81,7 @@
   },
   {
    "id": "hihnm-ic-1101",
+   "slug": "hihnm_ic",
    "region": "인천",
    "district": "인천 남동구",
    "name": "인천 하이허니문",
@@ -84,6 +92,7 @@
   },
   {
    "id": "cdstory26-1101",
+   "slug": "cdstory26",
    "region": "전라도",
    "district": "전북 전주시",
    "name": "청담스토리 웨딩초대전",
@@ -94,6 +103,7 @@
   },
   {
    "id": "iwc-cheonan-1101",
+   "slug": "iwc_cheonan",
    "region": "충청도",
    "district": "충남 천안시 서북구",
    "name": "IWC 천안 웨딩박람회",
@@ -104,6 +114,7 @@
   },
   {
    "id": "terracehill-1101",
+   "slug": "terracehill",
    "region": "충청도",
    "district": "충남 천안시 서북구",
    "name": "천안 테라스힐",
@@ -114,6 +125,7 @@
   },
   {
    "id": "hihnm-ca-1101",
+   "slug": "hihnm_ca",
    "region": "충청도",
    "district": "충남 천안시 동남구",
    "name": "천안 하이허니문",
@@ -124,6 +136,7 @@
   },
   {
    "id": "withu-wjss-1114",
+   "slug": "withu_wjss",
    "region": "강원도",
    "district": "강원 원주시",
    "name": "원주 삼성스토어 위드유 웨딩박람회",
@@ -134,6 +147,7 @@
   },
   {
    "id": "withu-cclg-1114",
+   "slug": "withu_cclg",
    "region": "강원도",
    "district": "강원 춘천시",
    "name": "춘천퇴계점 LG베스트샵 위드유 웨딩박람회",
@@ -144,6 +158,7 @@
   },
   {
    "id": "wedcrowd-gmak-1114",
+   "slug": "wedcrowd_gmak",
    "region": "경기",
    "district": "경기 광명시",
    "name": "광명 AK 대형 웨딩박람회",
@@ -154,6 +169,7 @@
   },
   {
    "id": "tsl-swcity-1114",
+   "slug": "tsl_swcity",
    "region": "경기",
    "district": "경기 수원시 팔달구",
    "name": "더셜리 수원 시청역 웨딩페어",
@@ -164,6 +180,7 @@
   },
   {
    "id": "shirley-uijeonbu-1114",
+   "slug": "shirley_uijeonbu",
    "region": "경기",
    "district": "경기 의정부시",
    "name": "더셜리 웨딩 의정부 신세계백화점 웨딩페어",
@@ -174,6 +191,7 @@
   },
   {
    "id": "withu-bcss-1114",
+   "slug": "withu_bcss",
    "region": "경기",
    "district": "경기 부천시",
    "name": "부천 위드유 웨딩박람회",
@@ -184,6 +202,7 @@
   },
   {
    "id": "wnco-sn-1114",
+   "slug": "wnco_sn",
    "region": "경기",
    "district": "경기 용인시 수지구",
    "name": "성남/용인 그랜드 웨딩페어",
@@ -194,6 +213,7 @@
   },
   {
    "id": "wedcrowd-swgg-1114",
+   "slug": "wedcrowd_swgg",
    "region": "경기",
    "district": "경기 수원시 영통구",
    "name": "수원 갤러리아 광교 대형 웨딩박람회",
@@ -204,6 +224,7 @@
   },
   {
    "id": "howto-sw-1114",
+   "slug": "howto_sw",
    "region": "경기",
    "district": "경기 수원시 영통구",
    "name": "수원 메쎄 홈씨씨 웨딩박람회",
@@ -214,6 +235,7 @@
   },
   {
    "id": "tsl-swcityhm-1114",
+   "slug": "tsl_swcityhm",
    "region": "경기",
    "district": "경기 수원시 팔달구",
    "name": "수원 시청역 허니문페스타",
@@ -224,6 +246,7 @@
   },
   {
    "id": "paris-swwt-1114",
+   "slug": "paris_swwt",
    "region": "경기",
    "district": "경기 수원시 팔달구",
    "name": "수원 웨딩거리 웨딩박람회",
@@ -234,6 +257,7 @@
   },
   {
    "id": "paris-swlt0607-1114",
+   "slug": "paris_swlt0607",
    "region": "경기",
    "district": "경기 수원시 권선구",
    "name": "수원 타임빌라스 웨딩박람회",
@@ -244,6 +268,7 @@
   },
   {
    "id": "wedcrowd-swms-1114",
+   "slug": "wedcrowd_swms",
    "region": "경기",
    "district": "경기 수원시 권선구",
    "name": "수원메쎄 대형 웨딩박람회",
@@ -254,6 +279,7 @@
   },
   {
    "id": "wedcrowd-sw-1114",
+   "slug": "wedcrowd_sw",
    "region": "경기",
    "district": "경기 수원시 영통구",
    "name": "수원컨벤션센터 초대형 웨딩박람회",
@@ -264,6 +290,7 @@
   },
   {
    "id": "wnco-gyg-1114",
+   "slug": "wnco_gyg",
    "region": "경기",
    "district": "경기 고양시 덕양구",
    "name": "스타필드 고양 그랜드 웨딩페어",
@@ -274,6 +301,7 @@
   },
   {
    "id": "withu-asss-1114",
+   "slug": "withu_asss",
    "region": "경기",
    "district": "경기 안산시 상록구",
    "name": "안산 삼성 고잔점 위드유 웨딩박람회",
@@ -284,6 +312,7 @@
   },
   {
    "id": "shirley-wctujb-1114",
+   "slug": "shirley_wctujb",
    "region": "경기",
    "district": "경기 의정부시",
    "name": "의정부 신세계백화점 신혼여행 페어",
@@ -294,6 +323,7 @@
   },
   {
    "id": "revew-jdw-1114",
+   "slug": "revew_jdw",
    "region": "경기",
    "district": "경기 부천시",
    "name": "중동 롯데백화점 레브웨딩박람회",
@@ -304,6 +334,7 @@
   },
   {
    "id": "wedcrowd-ptak-1114",
+   "slug": "wedcrowd_ptak",
    "region": "경기",
    "district": "경기 평택시",
    "name": "평택 AK 대형 웨딩박람회",
@@ -314,6 +345,7 @@
   },
   {
    "id": "wnco-pt-1114",
+   "slug": "wnco_pt",
    "region": "경기",
    "district": "경기 평택시",
    "name": "평택 그랜드 웨딩페어",
@@ -324,6 +356,7 @@
   },
   {
    "id": "daegyulmo5-1114",
+   "slug": "daegyulmo5",
    "region": "경상도",
    "district": "대구 중구",
    "name": "대구 대결모 대규모 웨딩박람회",
@@ -334,6 +367,7 @@
   },
   {
    "id": "lamour-dg-1114",
+   "slug": "lamour_dg",
    "region": "경상도",
    "district": "대구 동구",
    "name": "대구 라모르 웨딩박람회",
@@ -344,6 +378,7 @@
   },
   {
    "id": "yeonwed-sg-1114",
+   "slug": "yeonwed_sg",
    "region": "경상도",
    "district": "대구 수성구",
    "name": "대구 연웨딩 수성 그랜드호텔 웨딩박람회",
@@ -354,6 +389,7 @@
   },
   {
    "id": "w-ltus-1114",
+   "slug": "w_ltus",
    "region": "경상도",
    "district": "울산 남구",
    "name": "울산 롯데백화점 웨딩박람회",
@@ -364,6 +400,7 @@
   },
   {
    "id": "ktour-ulsan-1114",
+   "slug": "ktour_ulsan",
    "region": "경상도",
    "district": "울산 북구",
    "name": "울산 반하나 허니문박람회",
@@ -374,6 +411,7 @@
   },
   {
    "id": "cwonfair4-1114",
+   "slug": "cwonfair4",
    "region": "경상도",
    "district": "경남 창원시 성산구",
    "name": "창원 최대규모 대형 웨딩박람회",
@@ -384,6 +422,7 @@
   },
   {
    "id": "knn-centum-1114",
+   "slug": "knn_centum",
    "region": "부산",
    "district": "부산 해운대구",
    "name": "W웨딩 신세계센텀 부산웨딩박람회",
@@ -394,6 +433,7 @@
   },
   {
    "id": "wwcity-1114",
+   "slug": "wwcity",
    "region": "부산",
    "district": "부산 부산진구",
    "name": "W웨딩시티 부산웨딩박람회",
@@ -404,6 +444,7 @@
   },
   {
    "id": "charles-gb2-1114",
+   "slug": "charles_gb2",
    "region": "부산",
    "district": "부산 중구",
    "name": "롯데백화점 부산본점 웨딩엑스포",
@@ -414,6 +455,7 @@
   },
   {
    "id": "charles-db-1114",
+   "slug": "charles_db",
    "region": "부산",
    "district": "부산 부산진구",
    "name": "부산 더블혜택 웨딩박람회",
@@ -424,6 +466,7 @@
   },
   {
    "id": "charles2-1114",
+   "slug": "charles2",
    "region": "부산",
    "district": "부산 부산진구",
    "name": "부산 찰스 웨딩박람회",
@@ -434,6 +477,7 @@
   },
   {
    "id": "wedcrowd-ys-1114",
+   "slug": "wedcrowd_ys",
    "region": "서울",
    "district": "서울 용산구",
    "name": "용산 아이파크몰 대형 웨딩박람회",
@@ -444,6 +488,7 @@
   },
   {
    "id": "wplus-ydp-1114",
+   "slug": "wplus_ydp",
    "region": "서울",
    "district": "서울 영등포구",
    "name": "웨딩더하기 영등포 신세계 타임스퀘어 웨딩박람회",
@@ -454,6 +499,7 @@
   },
   {
    "id": "palmtour2-1114",
+   "slug": "palmtour2",
    "region": "서울",
    "district": "서울 강남구",
    "name": "팜투어 신혼여행 박람회",
@@ -464,6 +510,7 @@
   },
   {
    "id": "gjwshow-1114",
+   "slug": "gjwshow",
    "region": "전라도",
    "district": "광주 서구",
    "name": "광주 컨벤션 웨딩박람회",
@@ -474,6 +521,7 @@
   },
   {
    "id": "gjwedding-1114",
+   "slug": "gjwedding",
    "region": "전라도",
    "district": "광주 서구",
    "name": "광주웨딩페스타",
@@ -484,6 +532,7 @@
   },
   {
    "id": "jejulot-1114",
+   "slug": "jejulot",
    "region": "제주도",
    "district": "제주 제주시",
    "name": "제주 롯데시티호텔 초대형 웨딩박람회",
@@ -494,6 +543,7 @@
   },
   {
    "id": "wedcrowd-nc-1114",
+   "slug": "wedcrowd_nc",
    "region": "충청도",
    "district": "대전 유성구",
    "name": "대전 NC백화점 대형 웨딩박람회",
@@ -504,6 +554,7 @@
   },
   {
    "id": "planit-djgt-1114",
+   "slug": "planit_djgt",
    "region": "충청도",
    "district": "대전 서구",
    "name": "대전 갤러리아 타임월드 신혼여행박람회",
@@ -514,6 +565,7 @@
   },
   {
    "id": "wedcrowd-ca-1114",
+   "slug": "wedcrowd_ca",
    "region": "충청도",
    "district": "충남 천안시 서북구",
    "name": "천안 갤러리아 대형 웨딩박람회",
@@ -524,6 +576,7 @@
   },
   {
    "id": "bw-ca-1114",
+   "slug": "bw_ca",
    "region": "충청도",
    "district": "충남 천안시 동남구",
    "name": "천안 브랜드 웨딩박람회",
@@ -534,6 +587,7 @@
   },
   {
    "id": "withu-ca-1114",
+   "slug": "withu_ca",
    "region": "충청도",
    "district": "충남 천안시 서북구",
    "name": "천안 아일랜드유 위드유 웨딩박람회",
@@ -544,6 +598,7 @@
   },
   {
    "id": "wedcrowd-cjosco-1114",
+   "slug": "wedcrowd_cjosco",
    "region": "충청도",
    "district": "충북 청주시 흥덕구",
    "name": "청주 오스코 초대형 웨딩박람회",
@@ -554,6 +609,7 @@
   },
   {
    "id": "withu-cjyr-1114",
+   "slug": "withu_cjyr",
    "region": "충청도",
    "district": "충북 청주시 청원구",
    "name": "청주 율량점 엘지 위드유 웨딩박람회",
@@ -564,6 +620,7 @@
   },
   {
    "id": "planit-djh-1114",
+   "slug": "planit_djh",
    "region": "충청도",
    "district": "대전 서구",
    "name": "플래닛투어 DCC앵콜전 대전허니문박람회",
@@ -574,6 +631,7 @@
   },
   {
    "id": "wnco-wj-1121",
+   "slug": "wnco_wj",
    "region": "강원도",
    "district": "강원 원주시",
    "name": "AK플라자 원주 그랜드 웨딩페어",
@@ -584,6 +642,7 @@
   },
   {
    "id": "withu-gr-1121",
+   "slug": "withu_gr",
    "region": "강원도",
    "district": "강원 강릉시",
    "name": "강릉 위드유 웨딩박람회",
@@ -594,6 +653,7 @@
   },
   {
    "id": "howto-sww-1121",
+   "slug": "howto_sww",
    "region": "경기",
    "district": "경기 수원시 권선구",
    "name": "수원 메쎄 하우투 웨딩박람회",
@@ -604,6 +664,7 @@
   },
   {
    "id": "paris-swlt-1121",
+   "slug": "paris_swlt",
    "region": "경기",
    "district": "경기 수원시 권선구",
    "name": "수원 타임빌라스 웨딩박람회",
@@ -614,6 +675,7 @@
   },
   {
    "id": "wnco-aslt-1121",
+   "slug": "wnco_aslt",
    "region": "경기",
    "district": "경기 안산시 단원구",
    "name": "안산 롯데백화점 그랜드 웨딩페어",
@@ -624,6 +686,7 @@
   },
   {
    "id": "wnco-as-1121",
+   "slug": "wnco_as",
    "region": "경기",
    "district": "경기 안성시",
    "name": "안성 스타필드 그랜드 웨딩페어",
@@ -634,6 +697,7 @@
   },
   {
    "id": "wedcrowd-pc-1121",
+   "slug": "wedcrowd_pc",
    "region": "경기",
    "district": "경기 안양시 동안구",
    "name": "안양 롯데백화점 평촌 웨딩박람회",
@@ -644,6 +708,7 @@
   },
   {
    "id": "wplus-aypc-1121",
+   "slug": "wplus_aypc",
    "region": "경기",
    "district": "경기 안양시 동안구",
    "name": "웨딩더하기 안양평촌 롯데백화점 웨딩박람회",
@@ -654,6 +719,7 @@
   },
   {
    "id": "withu-icjp-1121",
+   "slug": "withu_icjp",
    "region": "경기",
    "district": "경기 이천시",
    "name": "이천 위드유 웨딩박람회",
@@ -664,6 +730,7 @@
   },
   {
    "id": "wnco-sw-1121",
+   "slug": "wnco_sw",
    "region": "경기",
    "district": "경기 수원시 권선구",
    "name": "타임빌라스 수원 대형 웨딩박람회",
@@ -674,6 +741,7 @@
   },
   {
    "id": "withu-ptlg-1121",
+   "slug": "withu_ptlg",
    "region": "경기",
    "district": "경기 평택시",
    "name": "평택 LG베스트샵 위드유 웨딩박람회",
@@ -684,6 +752,7 @@
   },
   {
    "id": "lamour-gh-1121",
+   "slug": "lamour_gh",
    "region": "경상도",
    "district": "경남 김해시",
    "name": "김해 라모르 웨딩박람회",
@@ -694,6 +763,7 @@
   },
   {
    "id": "jjwedfair-1121",
+   "slug": "jjwedfair",
    "region": "경상도",
    "district": "경남 진주시",
    "name": "진주 최대규모 웨딩박람회",
@@ -704,6 +774,7 @@
   },
   {
    "id": "w-cwlt-1121",
+   "slug": "w_cwlt",
    "region": "경상도",
    "district": "경남 창원시 성산구",
    "name": "창원 롯데백화점 웨딩박람회",
@@ -714,6 +785,7 @@
   },
   {
    "id": "w-cwpri-1121",
+   "slug": "w_cwpri",
    "region": "경상도",
    "district": "경남 창원시 성산구",
    "name": "창원 프리마베라 웨딩박람회",
@@ -724,6 +796,7 @@
   },
   {
    "id": "knn-wed-1121",
+   "slug": "knn_wed",
    "region": "부산",
    "district": "부산 해운대구",
    "name": "부산 웨딩박람회 in KNN 방송국",
@@ -734,6 +807,7 @@
   },
   {
    "id": "wedcrowd-at-1121",
+   "slug": "wedcrowd_at",
    "region": "서울",
    "district": "서울 서초구",
    "name": "aT센터 서울 대형 웨딩페스티벌",
@@ -744,6 +818,7 @@
   },
   {
    "id": "tsl-js-1121",
+   "slug": "tsl_js",
    "region": "서울",
    "district": "서울 송파구",
    "name": "더셜리 웨딩 서울 잠실 롯데백화점 웨딩페어",
@@ -754,6 +829,7 @@
   },
   {
    "id": "lameld-ddp-1121",
+   "slug": "lameld_ddp",
    "region": "서울",
    "district": "서울 중구",
    "name": "라멜드 청담 DDP 웨딩박람회",
@@ -764,6 +840,7 @@
   },
   {
    "id": "tsl-jshm-1121",
+   "slug": "tsl_jshm",
    "region": "서울",
    "district": "서울 송파구",
    "name": "서울 잠실 롯데백화점 신혼여행 페어",
@@ -774,6 +851,7 @@
   },
   {
    "id": "wedcrowd-jslt-1121",
+   "slug": "wedcrowd_jslt",
    "region": "서울",
    "district": "서울 송파구",
    "name": "잠실 롯데백화점 대형 웨딩박람회",
@@ -784,6 +862,7 @@
   },
   {
    "id": "wedcrowd-cnn-1121",
+   "slug": "wedcrowd_cnn",
    "region": "서울",
    "district": "서울 동대문구",
    "name": "청량리 롯데백화점 대형 웨딩박람회",
@@ -794,6 +873,7 @@
   },
   {
    "id": "wedcrowd-icsd-1121",
+   "slug": "wedcrowd_icsd",
    "region": "인천",
    "district": "인천 연수구",
    "name": "인천 송도컨벤시아 대형 웨딩박람회",
@@ -804,6 +884,7 @@
   },
   {
    "id": "gjstyling-1121",
+   "slug": "gjstyling",
    "region": "전라도",
    "district": "광주 서구",
    "name": "광주스타일링페어",
@@ -814,6 +895,7 @@
   },
   {
    "id": "ktop-jeju3-1121",
+   "slug": "ktop_jeju3",
    "region": "제주도",
    "district": "제주 제주시",
    "name": "제주 제이유 웨딩박람회",
@@ -824,6 +906,7 @@
   },
   {
    "id": "bhn-tourminjj-1121",
+   "slug": "bhn_tourminjj",
    "region": "제주도",
    "district": "제주 제주시",
    "name": "제주 투어민 허니문박람회",
@@ -834,6 +917,7 @@
   },
   {
    "id": "planit-bali-1121",
+   "slug": "planit_bali",
    "region": "충청도",
    "district": "대전 유성구",
    "name": "대전 발리 신혼여행박람회",
@@ -844,6 +928,7 @@
   },
   {
    "id": "withu-dj-1121",
+   "slug": "withu_dj",
    "region": "충청도",
    "district": "대전 서구",
    "name": "대전 위드유 웨딩박람회",
@@ -854,6 +939,7 @@
   },
   {
    "id": "wedcrowd-dj-1121",
+   "slug": "wedcrowd_dj",
    "region": "충청도",
    "district": "대전 유성구",
    "name": "대전 컨벤션센터 대형 웨딩박람회",
@@ -864,6 +950,7 @@
   },
   {
    "id": "wnco-cj-1121",
+   "slug": "wnco_cj",
    "region": "충청도",
    "district": "충북 청주시 청원구",
    "name": "청주 그랜드 웨딩페어",
@@ -874,6 +961,7 @@
   },
   {
    "id": "revew-cjow-1121",
+   "slug": "revew_cjow",
    "region": "충청도",
    "district": "충북 청주시 흥덕구",
    "name": "청주 오스코 레브웨딩박람회",
@@ -884,6 +972,7 @@
   },
   {
    "id": "wedcrowd-cjgw-1121",
+   "slug": "wedcrowd_cjgw",
    "region": "충청도",
    "district": "충북 청주시 흥덕구",
    "name": "청주 지웰시티몰 웨딩박람회",
@@ -894,6 +983,7 @@
   },
   {
    "id": "withu-cj-1121",
+   "slug": "withu_cj",
    "region": "충청도",
    "district": "충북 충주시",
    "name": "충주 위드유 웨딩박람회",
@@ -904,6 +994,7 @@
   },
   {
    "id": "revew-gn-1128",
+   "slug": "revew_gn",
    "region": "강원도",
    "district": "강원 강릉시",
    "name": "강릉 세인트존스 레브웨딩박람회",
@@ -914,6 +1005,7 @@
   },
   {
    "id": "sb-yy-1128",
+   "slug": "sb_yy",
    "region": "강원도",
    "district": "강원 양양군",
    "name": "쏠비치 양양 대형 웨딩박람회",
@@ -924,6 +1016,7 @@
   },
   {
    "id": "withu-cc-1128",
+   "slug": "withu_cc",
    "region": "강원도",
    "district": "강원 춘천시",
    "name": "춘천 더테라리움 위드유 웨딩박람회",
@@ -934,6 +1027,7 @@
   },
   {
    "id": "shirley-sw-1128",
+   "slug": "shirley_sw",
    "region": "경기",
    "district": "경기 수원시 팔달구",
    "name": "더셜리 웨딩 수원 광교 갤러리아백화점 웨딩페어",
@@ -944,6 +1038,7 @@
   },
   {
    "id": "wnco-dt-1128",
+   "slug": "wnco_dt",
    "region": "경기",
    "district": "경기 화성시",
    "name": "동탄 롯데백화점 그랜드 웨딩페어",
@@ -954,6 +1049,7 @@
   },
   {
    "id": "shirley-wctsw-1128",
+   "slug": "shirley_wctsw",
    "region": "경기",
    "district": "경기 수원시 팔달구",
    "name": "수원 광교 갤러리아백화점 신혼여행 페어",
@@ -964,6 +1060,7 @@
   },
   {
    "id": "wnco-sh-1128",
+   "slug": "wnco_sh",
    "region": "경기",
    "district": "경기 시흥시",
    "name": "시흥 프리미엄아울렛 그랜드 웨딩페어",
@@ -974,6 +1071,7 @@
   },
   {
    "id": "revew-as-1128",
+   "slug": "revew_as",
    "region": "경기",
    "district": "경기 안산시 단원구",
    "name": "안산문화예술의전당 레브웨딩박람회",
@@ -984,6 +1082,7 @@
   },
   {
    "id": "wedcrowd-iss2-1128",
+   "slug": "wedcrowd_iss2",
    "region": "경기",
    "district": "경기 고양시 일산서구",
    "name": "일산킨텍스 최대규모 대형 웨딩박람회",
@@ -994,6 +1093,7 @@
   },
   {
    "id": "ghwedfair-1128",
+   "slug": "ghwedfair",
    "region": "경상도",
    "district": "경남 김해시",
    "name": "김해 최대규모 웨딩박람회",
@@ -1004,6 +1104,7 @@
   },
   {
    "id": "haram2-1128",
+   "slug": "haram2",
    "region": "경상도",
    "district": "대구 중구",
    "name": "웨딩하람 웨딩박람회",
@@ -1014,6 +1115,7 @@
   },
   {
    "id": "lamour-poh-1128",
+   "slug": "lamour_poh",
    "region": "경상도",
    "district": "경북 포항시 북구",
    "name": "포항 라모르 웨딩박람회",
@@ -1024,6 +1126,7 @@
   },
   {
    "id": "charles-gb-1128",
+   "slug": "charles_gb",
    "region": "부산",
    "district": "부산 중구",
    "name": "롯데백화점 광복점 웨딩엑스포",
@@ -1034,6 +1137,7 @@
   },
   {
    "id": "aver-wed-1128",
+   "slug": "aver_wed",
    "region": "인천",
    "district": "인천 연수구",
    "name": "초대형 아베르 웨딩박람회",
@@ -1044,6 +1148,7 @@
   },
   {
    "id": "jejurmd-1128",
+   "slug": "jejurmd",
    "region": "제주도",
    "district": "제주 제주시",
    "name": "제주 라마다호텔 초대형 웨딩박람회",
@@ -1054,6 +1159,7 @@
   },
   {
    "id": "howto-cjocc-1128",
+   "slug": "howto_cjocc",
    "region": "충청도",
    "district": "충북 청주시 흥덕구",
    "name": "청주 OCC 하우투 웨딩박람회",
@@ -1064,6 +1170,7 @@
   },
   {
    "id": "howto-hnm-1128",
+   "slug": "howto_hnm",
    "region": "충청도",
    "district": "충북 청주시 흥덕구",
    "name": "청주 OCC 하우투 허니문박람회",
@@ -1074,6 +1181,7 @@
   },
   {
    "id": "familytour-cj-1128",
+   "slug": "familytour_cj",
    "region": "충청도",
    "district": "충북 청주시 흥덕구",
    "name": "청주 OSCO 패밀리 웨딩박람회",
@@ -1084,6 +1192,7 @@
   },
   {
    "id": "yeonwed-1205",
+   "slug": "yeonwed",
    "region": "경상도",
    "district": "대구 북구",
    "name": "대구 연웨딩 엑스코인터불고 웨딩박람회",
@@ -1094,6 +1203,7 @@
   },
   {
    "id": "cdstory-hera-1205",
+   "slug": "cdstory_hera",
    "region": "전라도",
    "district": "전북 전주시",
    "name": "전주 더웨스틴 헤라 웨딩박람회",
@@ -1104,6 +1214,7 @@
   },
   {
    "id": "bwc24-1211",
+   "slug": "bwc24",
    "region": "부산",
    "district": "부산 해운대구",
    "name": "BWC 부산 벡스코 웨딩박람회",
@@ -1114,6 +1225,7 @@
   },
   {
    "id": "daegu-daebak-1212",
+   "slug": "daegu_daebak",
    "region": "경상도",
    "district": "대구 북구",
    "name": "대구 대박웨딩박람회",
@@ -1124,6 +1236,7 @@
   },
   {
    "id": "planit-djh2-1212",
+   "slug": "planit_djh2",
    "region": "충청도",
    "district": "대전 유성구",
    "name": "대전 DCC 허니문박람회",
