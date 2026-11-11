@@ -101,7 +101,21 @@ def main():
     render("404.html", "/404", cfg["title"], cfg["description"])
     make_og()
 
-    urls = [("/", "1.0"), ("/offers", "0.6")] + [(f"/offers?c={c}", "0.7") for c in cfg.get("offer_categories", [])]
+    # 전국 웨딩박람회 일정 페이지 (data/fairs.json 이 있을 때만)
+    import sys
+    sys.path.insert(0, str(ROOT / "tools"))
+    import fairs as F
+    fdata = F.load(ROOT)
+    extra = []
+    if fdata and cfg.get("fair_link"):
+        style = F.style_of((SRC / "index.html").read_text(encoding="utf-8"))
+        theme = cfg.get("og_colors", {}).get("accent", "#3182f6")
+        t = "전국 웨딩박람회 일정 | " + cfg["title"]
+        dsc = f"전국 웨딩박람회·신혼여행 박람회 일정 {len(fdata['fairs'])}곳을 날짜순으로 정리했어요. 지역별로 보고 무료 초대권을 신청하세요."
+        (DIST / "fairs.html").write_text(F.list_page(fdata, cfg, seo_block("/fairs", t, dsc), style, theme), encoding="utf-8")
+        extra.append(("/fairs", "0.9"))
+
+    urls = [("/", "1.0")] + extra + [("/offers", "0.6")] + [(f"/offers?c={c}", "0.7") for c in cfg.get("offer_categories", [])]
     (DIST / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{URL}{p}</loc><lastmod>{TODAY}</lastmod><priority>{pr}</priority></url>\n" for p, pr in urls)
