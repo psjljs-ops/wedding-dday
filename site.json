@@ -1,0 +1,16 @@
+{
+  "name": "wedding-dday",
+  "title": "결혼 준비 D-day 체크리스트 - 예식일까지 할 일 정리",
+  "description": "예식일만 넣으면 상견례, 예식장, 스드메, 신혼집, 혼수, 이사, 혼인신고까지 결혼 준비 일정을 날짜로 정리해 드려요. 무료, 회원가입 없음.",
+  "eyebrow": "무료 · 회원가입 없음",
+  "headline_1": "예식일만 넣으면",
+  "headline_2": "결혼 준비가 정리돼요",
+  "tagline": "예식장부터 신혼집, 혼인신고까지 놓치지 않게.",
+  "og_chips": ["D-day 일정표", "신혼집 준비", "혼수", "체크리스트"],
+  "og_colors": { "bg": "#fff3f6", "accent": "#c2416b", "accent_soft": "#fce4ec", "accent_text": "#8a2550" },
+  "offers_title": "신혼 준비 모음",
+  "offer_categories": ["moving", "clean", "interior", "internet", "rental", "honsu", "honeymoon"],
+  "goatcounter": "wedding",
+  "google_verification": "mM9h9M-RD--eig_kQoxlpfIkTL-EmWw2WRh2go4-hyg",
+  "naver_verification": ""
+}

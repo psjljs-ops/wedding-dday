@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{SITE_TITLE}}</title>
+<meta name="theme-color" content="#c2416b">
+<!--SEO-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  /* 메인 페이지에는 제휴 링크를 넣지 않습니다. 제휴 상품은 모두 offers.html 에서 관리합니다. */
+  :root {
+    --bg: #fff7f9; --card: #ffffff; --text: #2a1a21; --sub: #6d5561; --muted: #a38f99;
+    --line: #f5e1e8; --soft: #fdf0f4; --field: #fffafb;
+    --accent: #c2416b; --accent-press: #a3325a; --accent-soft: #fce4ec; --accent-text: #8a2550; --ring: #f3bfd0;
+    --green: #2f9e6e; --green-soft: #e3f5ec;
+    --shadow: 0 2px 14px rgba(120, 30, 60, .07);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161013; --card: #221a1e; --text: #f7edf1; --sub: #d2bfc8; --muted: #9a8590;
+      --line: #352830; --soft: #2b2026; --field: #2b2026;
+      --accent: #ff7aa2; --accent-press: #ff6592; --accent-soft: #3a1e29; --accent-text: #ffb3c8; --ring: #4a2433;
+      --green: #4fd39a; --green-soft: #17302a;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    line-height: 1.6; letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 16px 48px; }
+  .hero { padding: 36px 4px 8px; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; color: var(--accent-text);
+    background: var(--accent-soft); padding: 4px 10px; border-radius: 99px; margin-bottom: 12px; }
+  h1 { font-size: clamp(26px, 7vw, 34px); line-height: 1.3; margin: 0 0 10px; font-weight: 800; letter-spacing: -0.03em; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lead { color: var(--sub); margin: 0; font-size: 16px; }
+  .card { background: var(--card); border-radius: 22px; padding: 22px; margin-top: 16px; box-shadow: var(--shadow); }
+  h2 { font-size: 19px; font-weight: 800; margin: 0 0 14px; letter-spacing: -0.03em; }
+  .label { display: block; font-size: 14px; font-weight: 700; color: var(--sub); margin-bottom: 8px; }
+  .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: var(--soft); border-radius: 14px; padding: 4px; margin-bottom: 12px; }
+  .seg button { font: inherit; font-size: 14px; font-weight: 700; color: var(--sub); background: transparent; border: 0; border-radius: 11px; padding: 9px 4px; cursor: pointer; }
+  .seg button[aria-pressed=true] { background: var(--card); color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  input[type=date] { width: 100%; font: inherit; font-size: 17px; font-weight: 600; color: var(--text);
+    background: var(--field); border: 1.5px solid var(--line); border-radius: 14px; padding: 13px 14px; outline: none; }
+  input[type=date]:focus { border-color: var(--accent); }
+  .hint { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+
+  /* 주차 카드 */
+  .now[hidden], .after[hidden] { display: none; }
+  .week { display: flex; align-items: center; gap: 18px; }
+  .ring { position: relative; width: 104px; height: 104px; flex: none; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring b { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; font-size: 26px; font-weight: 800;
+    line-height: 1.1; color: var(--accent-text); letter-spacing: -0.03em; }
+  .ring b small { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .size small { font-size: 14px; color: var(--sub); font-weight: 600; }
+  .size b { display: block; font-size: clamp(21px, 6vw, 25px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; }
+  .size span { display: block; font-size: 14px; color: var(--accent-text); font-weight: 700; margin-top: 4px; }
+  .tri { display: grid; grid-template-columns: 13fr 14fr 13fr; gap: 4px; margin-top: 20px; }
+  .tri i { height: 8px; border-radius: 99px; background: var(--soft); overflow: hidden; display: block; }
+  .tri i s { display: block; height: 100%; background: var(--accent); }
+  .tri-l { display: grid; grid-template-columns: 13fr 14fr 13fr; gap: 4px; font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 600; }
+
+  /* 할 일 */
+  .task { display: flex; gap: 12px; align-items: flex-start; padding: 13px 0; border-top: 1px solid var(--line); }
+  .task:first-of-type { border-top: 0; padding-top: 2px; }
+  .chk { appearance: none; -webkit-appearance: none; flex: none; width: 24px; height: 24px; margin: 1px 0 0; border-radius: 50%;
+    border: 2px solid var(--ring); cursor: pointer; display: grid; place-items: center; background: var(--card); }
+  .chk:checked { background: var(--accent); border-color: var(--accent); }
+  .chk:checked::after { content: ""; width: 6px; height: 11px; border: solid #fff; border-width: 0 2.5px 2.5px 0; transform: translateY(-1px) rotate(45deg); }
+  .tbody { flex: 1; min-width: 0; }
+  .tt { font-weight: 700; font-size: 16px; }
+  .done .tt { color: var(--muted); text-decoration: line-through; }
+  .td { font-size: 14px; color: var(--sub); }
+  .tm { font-size: 12px; font-weight: 700; color: var(--muted); margin-top: 2px; }
+  .tm.hot { color: var(--accent-text); }
+  .shop { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 10px; text-decoration: none; font-size: 14px; font-weight: 700;
+    color: var(--accent-text); background: var(--accent-soft); border-radius: 12px; padding: 11px 12px; }
+  .shop::before { content: ""; width: 16px; height: 16px; background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='21' r='1'/%3E%3Ccircle cx='20' cy='21' r='1'/%3E%3Cpath d='M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='21' r='1'/%3E%3Ccircle cx='20' cy='21' r='1'/%3E%3Cpath d='M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6'/%3E%3C/svg%3E") center / contain no-repeat; }
+  .shop.talk::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/%3E%3C/svg%3E"); }
+  .phase { display: flex; justify-content: space-between; align-items: baseline; margin: 26px 0 4px; }
+  .phase:first-child { margin-top: 0; }
+  .phase h3 { font-size: 15px; margin: 0; font-weight: 800; color: var(--accent-text); }
+  .phase span { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .count { font-size: 14px; color: var(--sub); font-weight: 600; margin: -6px 0 14px; }
+  .empty { color: var(--muted); font-size: 15px; margin: 0; }
+
+  .menu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .menu a { background: var(--soft); border-radius: 14px; padding: 16px 14px; text-decoration: none; color: var(--text);
+    font-weight: 700; font-size: 15px; display: flex; gap: 8px; align-items: center; }
+  .menu a:hover { background: var(--line); }
+  .faq details { border-top: 1px solid var(--line); }
+  .faq details:first-of-type { border-top: 0; }
+  .faq summary { list-style: none; cursor: pointer; font-weight: 700; padding: 16px 28px 16px 0; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: ""; position: absolute; right: 4px; top: 50%; width: 8px; height: 8px; margin-top: -6px;
+    border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .2s; }
+  .faq details[open] summary::after { transform: rotate(-135deg); margin-top: -2px; }
+  .faq details p { margin: 0 0 16px; color: var(--sub); font-size: 15px; }
+  footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 28px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">{{EYEBROW}}</span>
+    <h1>{{HEADLINE_1}}<br><em>{{HEADLINE_2}}</em></h1>
+    <p class="lead">{{TAGLINE}}</p>
+  </header>
+
+  <section class="card" aria-label="예식일 입력">
+    <label class="label" for="date">예식일</label>
+    <input type="date" id="date">
+    <p class="hint" id="dateHint">예식장을 아직 못 정했다면 희망 날짜를 넣어 보세요. 입력한 내용은 이 기기에만 저장돼요.</p>
+  </section>
+
+  <section class="card now" id="now" hidden aria-live="polite">
+    <div class="week">
+      <div class="ring">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="var(--soft)" stroke-width="10"/>
+          <circle id="arc" cx="50" cy="50" r="44" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="276.5"/>
+        </svg>
+        <b><span id="wk">-</span><small id="wkd"></small></b>
+      </div>
+      <div class="size">
+        <small id="sizeLabel">결혼식까지</small>
+        <b id="sizeName">-</b>
+        <span id="dday"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="thisWeek" hidden>
+    <h2 id="twTitle">지금 할 일</h2>
+    <div id="twList"></div>
+  </section>
+
+  <section class="card" id="all" hidden>
+    <h2>전체 일정</h2>
+    <p class="count" id="count"></p>
+    <div id="allList"></div>
+  </section>
+
+  <section class="card">
+    <h2>신혼 준비 바로 보기</h2>
+    <div class="menu">
+      <a href="/offers?c=moving"><span>🚚</span>포장이사 견적</a>
+      <a href="/offers?c=clean"><span>🧽</span>입주청소 견적</a>
+      <a href="/offers?c=interior"><span>🛠️</span>인테리어 견적</a>
+      <a href="/offers?c=internet"><span>📶</span>인터넷 가입</a>
+      <a href="/offers?c=rental"><span>💧</span>정수기·가전 렌탈</a>
+      <a href="/offers?c=honsu"><span>🛒</span>혼수 생활용품</a>
+      <a href="/offers?c=honeymoon"><span>✈️</span>신혼여행 준비물</a>
+    </div>
+  </section>
+
+  <section class="card faq">
+    <h2>자주 묻는 질문</h2>
+    <details><summary>결혼 준비는 언제부터 시작하나요?</summary><p>원하는 날짜와 예식장이 정해지면 나머지 일정이 따라와요. 인기 있는 계절과 예식장은 1년 전에도 마감되는 경우가 있어서, 보통 상견례와 예식장 계약부터 서두르는 편이에요.</p></details>
+    <details><summary>스드메는 언제 계약하나요?</summary><p>예식장을 정한 뒤 6~8개월 전쯤 스튜디오·드레스·메이크업을 계약하는 경우가 많아요. 웨딩 촬영은 보통 예식 3~5개월 전에 해요.</p></details>
+    <details><summary>신혼집 이사는 예식 전과 후 중 언제가 좋나요?</summary><p>예식 전에 들어가 살림을 미리 채워 두는 경우가 많아요. 신혼여행에서 돌아와 바로 생활할 수 있고, 가전 설치와 인터넷 개통 날짜를 여유 있게 잡을 수 있어요.</p></details>
+    <details><summary>혼인신고는 언제 하나요?</summary><p>시기는 부부가 정하면 돼요. 다만 신혼부부 대상 대출이나 청약은 혼인신고일을 기준으로 자격을 보는 경우가 많아서, 이용하려는 제도의 기준을 먼저 확인하고 날짜를 정하세요.</p></details>
+    <details><summary>예산은 어떻게 나누나요?</summary><p>예식장, 스드메, 예물·예복, 신혼여행, 신혼집과 혼수로 나눠 큰 항목부터 한도를 정해 두면 흔들리지 않아요. 양가와 미리 이야기해 두면 나중에 서운한 일이 줄어요.</p></details>
+  </section>
+
+  <footer>
+    본 체크리스트는 일반적인 결혼 준비 일정을 정리한 참고 자료입니다. 일정은 지역, 예식장, 계절에 따라 달라질 수 있어요.<br>
+    일부 연결 페이지에는 제휴 링크가 포함되어 있으며, 이를 통해 운영자가 수수료를 받을 수 있습니다.
+  </footer>
+</div>
+
+<script>
+/* 할 일: [시작(예식일 기준 일), 끝, 제목, 설명, 연결 페이지(선택)]  음수 = 예식 전 */
+var TASKS = [
+  [-365, -270, "예산과 하객 규모 정하기", "전체 예산과 대략적인 하객 수를 먼저 정하면 예식장 고르기가 쉬워요."],
+  [-330, -240, "상견례", "양가 인사와 함께 예식 시기, 예산 분담을 이야기해요."],
+  [-330, -210, "예식장 투어·계약", "식대, 보증 인원, 대관료, 음식 시식 일정을 비교해 보세요."],
+  [-270, -180, "스드메 계약", "스튜디오·드레스·메이크업 패키지를 비교하고 추가금 항목을 확인하세요."],
+  [-240, -150, "신혼여행지 정하고 항공권 예약", "성수기 항공권은 일찍 오를 수 있어요. 여권 만료일도 확인하세요."],
+  [-210, -90, "신혼집 구하기", "전세·매매 계약과 대출 일정을 함께 맞춰야 해요. 잔금일과 이사일을 정해 두세요."],
+  [-150, -90, "웨딩 촬영", "촬영 전 드레스 셀렉, 소품, 헤어 시안을 준비해요."],
+  [-120, -60, "예물·예복·한복 준비", "맞춤 예복은 제작 기간이 걸려요. 가봉 일정까지 넉넉히 잡으세요."],
+  [-120, -45, "신혼집 인테리어", "도배·장판·욕실 공사는 짐이 들어오기 전 빈집일 때 해요.", "interior"],
+  [-120, -45, "혼수 가전·가구 고르기", "큰 가전은 배송·설치 날짜를 이사일에 맞춰 예약하세요.", "rental"],
+  [-100, -60, "청첩장 만들기", "종이 청첩장 수량과 모바일 청첩장을 함께 준비해요."],
+  [-90, -30, "포장이사 견적 받기", "날짜가 정해지면 바로 2~3곳 견적을 비교하세요. 손 없는 날은 일찍 마감돼요.", "moving"],
+  [-75, -20, "신혼집 인터넷·TV 신청", "입주일에 바로 쓰려면 설치 기사 일정을 미리 잡아야 해요.", "internet"],
+  [-60, -30, "청첩장 전달", "모임과 인사 일정을 잡고, 모바일 청첩장은 한 달 전쯤 보내요."],
+  [-60, -14, "입주청소 예약", "빈집일 때 청소해야 구석구석 깨끗해요. 이사 전날로 많이 잡아요.", "clean"],
+  [-60, -7, "생활용품 채우기", "침구, 주방용품, 수납용품처럼 첫날부터 필요한 것부터 준비해요.", "honsu"],
+  [-30, -14, "본식 준비 확정", "식순, 사회자, 축가, 부케, 폐백 여부를 확정하고 드레스 가봉을 해요."],
+  [-21, -3, "신혼여행 짐 챙기기", "여권, 환전, 유심·로밍, 여행자 보험을 확인하세요.", "honeymoon"],
+  [-10, -1, "최종 하객 수 전달", "예식장에 보증 인원을 확정해 알리고 식권 수량을 맞춰요."],
+  [-3, 0, "예식 전날 점검", "웨딩 슈즈, 반지, 축의금 정리 담당, 혼주 연락처를 한 번 더 확인해요."],
+  [1, 30, "감사 인사", "하객 감사 인사와 축의금 정리를 마무리해요."],
+  [1, 60, "혼인신고", "이용하려는 신혼부부 대출·청약 기준일을 확인하고 날짜를 정하세요. 주민센터나 온라인(전자가족관계등록시스템)에서 할 수 있어요."],
+  [7, 90, "신혼부부 지원 제도 확인", "대출, 청약, 지자체 지원은 해마다 바뀌어요. 마이홈포털과 지자체 안내에서 자격을 확인하세요."]
+];
+
+var KEY = "wedding-state", S = { date: "", done: {} };
+try { var sv = JSON.parse(localStorage.getItem(KEY)); if (sv) { S.date = sv.date || ""; S.done = sv.done || {}; } } catch (e) {}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+var $ = function (id) { return document.getElementById(id); };
+var DAY = 864e5, WD = ["일","월","화","수","목","금","토"];
+function parse(v) { var a = v.split("-"); return new Date(+a[0], +a[1]-1, +a[2]); }
+function addDays(d, n) { var r = new Date(d); r.setDate(r.getDate() + n); return r; }
+function md(d) { return (d.getMonth()+1) + "월 " + d.getDate() + "일"; }
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function rel(n) { if (n === 0) return "당일"; if (n > 0) return "D+" + n; var m = Math.round(-n / 30); return -n >= 60 ? m + "개월 전" : -n + "일 전"; }
+
+var LINK = { moving:"포장이사 견적 비교", clean:"입주청소 견적 비교", interior:"인테리어 견적 비교", internet:"인터넷 상담 보기",
+  rental:"가전 렌탈 상담 보기", honsu:"추천 생활용품 보기", honeymoon:"추천 여행 준비물 보기" };
+var TALK = { moving:1, clean:1, interior:1, internet:1, rental:1 };
+
+function taskHtml(t, i, wd, dn) {
+  var start = addDays(wd, t[0]), end = addDays(wd, t[1]), done = !!S.done[i];
+  var when = rel(t[0]) + (t[1] !== t[0] ? " ~ " + rel(t[1]) : "") + " · " + md(start) + (t[1] !== t[0] ? " ~ " + md(end) : "");
+  var hot = dn >= t[0] && dn <= t[1] && !done;
+  var link = t[4] ? '<a class="shop' + (TALK[t[4]] ? " talk" : "") + '" href="/offers?c=' + t[4] + '">' + LINK[t[4]] + '</a>' : "";
+  return '<div class="task' + (done ? " done" : "") + '"><input type="checkbox" class="chk" data-i="' + i + '"' + (done ? " checked" : "") +
+    ' aria-label="' + esc(t[2]) + ' 완료"><div class="tbody"><div class="tt">' + esc(t[2]) + '</div><div class="td">' + esc(t[3]) + '</div>' +
+    '<div class="tm' + (hot ? " hot" : "") + '">' + (hot ? "지금 할 때 · " : "") + when + '</div>' + link + '</div></div>';
+}
+
+function render() {
+  var wd = /^\d{4}-\d{2}-\d{2}$/.test(S.date) ? parse(S.date) : null;
+  ["now", "thisWeek", "all"].forEach(function (id) { $(id).hidden = !wd; });
+  if (!wd) return;
+  var today = new Date(); today.setHours(0,0,0,0);
+  var left = Math.round((wd - today) / DAY), dn = -left;
+
+  if (left > 0) {
+    $("wk").textContent = "D-" + left; $("wkd").textContent = left >= 60 ? "약 " + Math.round(left / 30) + "개월" : left + "일 남음";
+    $("sizeLabel").textContent = "결혼식까지"; $("sizeName").textContent = left + "일 남았어요";
+  } else if (left === 0) {
+    $("wk").textContent = "D-DAY"; $("wkd").textContent = "";
+    $("sizeLabel").textContent = "오늘"; $("sizeName").textContent = "결혼을 축하해요";
+  } else {
+    $("wk").textContent = "D+" + (-left); $("wkd").textContent = "";
+    $("sizeLabel").textContent = "결혼"; $("sizeName").textContent = "축하해요";
+  }
+  $("wk").style.fontSize = $("wk").textContent.length > 5 ? "21px" : "";
+  $("dday").textContent = "예식일 " + wd.getFullYear() + "년 " + md(wd) + " (" + WD[wd.getDay()] + ")";
+  var pct = left <= 0 ? 1 : Math.max(0, Math.min(1, 1 - left / 365));
+  $("arc").style.strokeDashoffset = (276.5 * (1 - pct)).toFixed(1);
+
+  var now = [], over = [];
+  TASKS.forEach(function (t, i) {
+    if (S.done[i]) return;
+    if (dn >= t[0] && dn <= t[1]) now.push(taskHtml(t, i, wd, dn));
+    else if (dn > t[1] && dn - t[1] <= 30 && !(dn > 0 && t[1] <= 0)) over.push(taskHtml(t, i, wd, dn));  /* 예식 후엔 예식 전 할 일을 다시 띄우지 않음 */
+  });
+  $("twTitle").textContent = "지금 할 일";
+  $("twList").innerHTML = now.length || over.length ? now.join("") + over.join("") :
+    (dn < -365 ? '<p class="empty">아직 여유가 있어요. 예식 1년 전부터 할 일이 시작돼요. 아래 전체 일정을 미리 살펴보세요.</p>' : '<p class="empty">지금 꼭 할 일은 없어요. 아래 전체 일정에서 다음 할 일을 미리 볼 수 있어요.</p>');
+
+  var groups = [["1년~6개월 전", -400, -180], ["6~3개월 전", -180, -90], ["3개월~한 달 전", -90, -30], ["한 달 전~당일", -30, 1], ["결혼 후", 1, 999]];
+  var h = "", doneN = 0;
+  groups.forEach(function (g) {
+    var items = TASKS.map(function (t, i) { return [t, i]; }).filter(function (x) { return x[0][0] >= g[1] && x[0][0] < g[2]; });
+    if (!items.length) return;
+    h += '<div class="phase"><h3>' + g[0] + '</h3><span>' + md(addDays(wd, Math.max(g[1], -365))) + (g[2] < 999 ? "~" : "부터") + '</span></div>';
+    items.forEach(function (x) { h += taskHtml(x[0], x[1], wd, dn); });
+  });
+  TASKS.forEach(function (t, i) { if (S.done[i]) doneN++; });
+  $("allList").innerHTML = h;
+  $("count").textContent = TASKS.length + "개 중 " + doneN + "개 완료";
+}
+
+$("date").value = S.date;
+$("date").addEventListener("input", function () { S.date = this.value; save(); render(); });
+document.addEventListener("change", function (e) {
+  if (!e.target.classList.contains("chk")) return;
+  var i = e.target.dataset.i;
+  if (e.target.checked) S.done[i] = 1; else delete S.done[i];
+  save(); render();
+});
+render();
+</script>
+</body>
+</html>
